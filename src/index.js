@@ -28,6 +28,24 @@ document.addEventListener("DOMContentLoaded", () => {
       increaseLikes(toy);
     });
     card.appendChild(button);
+    let editButton = document.createElement("button");
+    editButton.textContent = `Edit`;
+    editButton.addEventListener('click',(event) => {
+      if(editButton.innerText === "Save") {
+        editButton.innerText = "Edit"
+        //grab value of inpt field
+        let newToyName = document.getElementById(`edit-${toy.id}`).value
+        // make patch request to update toy 
+        //remove input field 
+
+        h2.innerHTML = newToyName
+      } else {
+        editButton.innerText = "Save"
+        h2.innerHTML= `<input type='text' id='edit-${toy.id}' value='${h2.innerText}' ></input>`
+        //replace the tpys name with input field 
+      }
+    })
+    card.appendChild(editButton);
     let toyCollection = document.getElementById("toy-collection");
     toyCollection.appendChild(card);
   }
